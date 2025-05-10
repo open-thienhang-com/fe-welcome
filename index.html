@@ -6,26 +6,39 @@
   <title>Base Apparel | Coming Soon</title>
   <link rel="icon" href="images/favicon-32x32.png" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+</style>
 </head>
 <body>
   <main class="container">
-    <section class="content">
-      <img src="images/logo.svg" alt="Base Apparel" class="logo" />
-      <h1><span>We're</span> coming soon</h1>
-      <p>
-        Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay up-to-date with announcements and our launch deals.
-      </p>
-      <form id="email-form" novalidate>
-        <input type="email" id="email" placeholder="Email Address" />
-        <button type="submit">
-          <img src="images/icon-arrow.svg" alt="Submit" />
-        </button>
-        <span class="error-message" id="error-msg"></span>
-      </form>
-    </section>
-    <section class="hero">
-      <img src="images/hero-desktop.jpg" alt="Model" class="hero-img" />
-    </section>
+    <div class="content">
+      <div class="content-inner">
+        <img src="images/logo.svg" alt="Base Apparel" class="logo" />
+        <div class="content-bg">
+          <img src="images/hero-desktop.jpg" alt="Model" class="content-bg-img" />
+        </div>
+        <h1><span>We're</span><br> coming<br> soon</h1>
+        <p>
+          Hello fellow shoppers! We're currently building our new fashion store. Add your email below to stay up-to-date with announcements and our launch deals.
+        </p>
+        <form id="email-form" novalidate>
+          <div class="email-input">
+            <input type="email" id="email" placeholder="Email Address" required/>
+            <button type="submit">
+              <img src="images/icon-arrow.svg" alt="Submit" />
+            </button>
+          </div>
+          <div class="error-message" id="error-msg">
+            <img src="images/icon-error.svg" alt="Error" class="error-icon" />
+            Please provide a valid email.
+          </div>
+        </form>
+        </div>
+    </div>
+    <div class="background">
+      <img src="images/hero-desktop.jpg" alt="Model" class="background-img" />
+    </div>
   </main>
   <script src="main.js"></script>
 </body>

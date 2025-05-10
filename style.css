@@ -5,17 +5,20 @@
     --dark-grayish-red: hsl(0, 6%, 24%);
     --font-family: 'Josefin Sans', sans-serif;
     --gradient-light: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
-    --gradient-dark: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
 }
 
-/* Body */
+/* Global Styles */
 body {
     font-family: var(--font-family);
-    background: var(--gradient-light);
+    background: var(--gradient-light), url('images/bg-pattern-desktop.svg') no-repeat center/cover;
     margin: 0;
     padding: 0;
     color: var(--dark-grayish-red);
     font-size: 16px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Container Layout */
@@ -24,6 +27,8 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 2rem;
+    font-family: var(--font-family);
+    width: 100%;
 }
 
 /* Logo and Heading */
@@ -42,79 +47,216 @@ h1 span {
     font-weight: 300;
 }
 
-/* Form */
+/* Paragraph Styling */
+.content-inner p {
+    color: var(--desaturated-red);
+    line-height: 1.5rem;
+}
+
+/* Form Layout */
 form {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
     align-items: center;
-}
-
-input {
-    padding: 0.75rem;
-    border: 1px solid var(--dark-grayish-red);
-    border-radius: 30px;
     width: 100%;
-    max-width: 400px;
-    margin-bottom: 1rem;
 }
 
-input:focus {
+/* Email Input and Button */
+.email-input {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+}
+
+.email-input input {
+    padding: 1rem;
+    border: 1px solid var(--desaturated-red);
+    border-radius: 30px;
+    width: 99%;
+    color: var(--desaturated-red);
+    font-family: var(--font-family);
+    max-width: 100%;
+    background-color: transparent;
+}
+
+.email-input input:focus {
     border-color: var(--soft-red);
     outline: none;
 }
 
-button {
+.email-input input::placeholder {
+    color: var(--desaturated-red);
+}
+
+.email-input button {
+    position: absolute;
+    top: 0;
+    right: -2rem;
     background-color: var(--soft-red);
-    border: none;
-    border-radius: 50%;
+    border: 1px solid var(--desaturated-red);
+    border-radius: 30px;
     padding: 1rem;
+    width: 80px;
+    height: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button:hover {
+.email-input button:hover {
     background-color: var(--desaturated-red);
 }
 
-button img {
+.email-input button img {
     width: 10px;
     height: 10px;
 }
 
+/* Error Message */
 .error-message {
-    color: var(--soft-red);
+    color: var(--desaturated-red);
     font-size: 0.8rem;
-    margin-top: 0.5rem;
+    align-items: center;
+    width: 100%;
+    display: none; /* Hidden by default */
 }
 
-/* Hero Image */
-.hero-img {
-    width: 100%;
-    max-width: 550px;
-    height: auto;
+.error-message.show {
+    display: flex;
+    /* Show error when needed */
+}
+
+.error-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
 }
 
 /* Responsive Design for Desktop */
 @media (min-width: 768px) {
     .container {
+        display: flex;
         flex-direction: row;
         justify-content: space-between;
-        padding: 5rem 10%;
+        padding: 0;
+        height: 60%;
+        overflow: hidden;
+        box-shadow: rgba(149, 157, 165, 0.2) 8px 8px 24px 6px;
+        width: 70%;
+    }
+
+    .container::-webkit-scrollbar {
+        display: none;
     }
 
     .content {
-        flex: 1;
-        max-width: 500px;
+        height: 100%;
+        width: 60vw;
+        background: url('images/bg-pattern-desktop.svg') no-repeat center/cover;
     }
 
-    .hero {
-        flex: 1;
-        max-width: 600px;
+    .content-inner {
+        padding: 3rem 9rem;
+        height: 100%;
     }
 
-    .hero-img {
-        max-width: 100%;
-        height: auto;
+    .content-inner h1 {
+        font-size: 4rem;
+        margin-bottom: 2rem;
+        letter-spacing: 1.5rem;
+    }
+
+    .background {
+        height: 100%;
+        width: 40vw;
+    }
+
+    .background-img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .content-bg-img {
+        display: none;
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+    body {
+        justify-content: flex-start;
+    }
+
+    .container {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .logo {
+        margin: 1.5rem;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        margin-top: 3rem;
+        text-align: center;
+        letter-spacing: 0.75rem;
+
+    }
+
+    .content-inner p {
+        font-size: 1rem;
+        padding: 0 2.5rem;
+        text-align: center;
+    }
+
+    form {
+        justify-content: center;
+    }
+
+    /* Adjust email input and button */
+    .email-input {
+        display: flex;
+        justify-content: center;
+        max-width: 80%;
+        margin-bottom: 0.5rem;
+    }
+
+    .email-input input {
+        padding: 1rem;
+        font-size: 1rem;
+        border-radius: 30px;
+        width: 100%;
+    }
+
+    .email-input button {
+        width: 50px;
+        right: 0rem;
+        padding: 0.75rem;
+    }
+
+    .error-message {
+        /* padding: 0 2.5rem; */
+        color: var(--desaturated-red);
+        font-size: 0.8rem;
+        /* display: flex; */
+        align-items: center;
+        width: 100%;
+        margin-top: 0.5rem;
+        display: none;
+        /* Hidden by default */
+    }
+
+    .background-img {
+        display: none;
+    }
+
+    .content-bg-img {
+        height: 35vh;
+        width: 100%;
+        object-fit: cover;
+        object-position: 10% 10%;
     }
 }
